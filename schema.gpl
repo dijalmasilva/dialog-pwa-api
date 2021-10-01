@@ -1,0 +1,43 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """ID of the user (id)"""
+  _id: String!
+
+  """Index of the user (index)"""
+  index: Int!
+
+  """Picture of the user (picture)"""
+  picture: String!
+
+  """Age of the user (age)"""
+  age: Int!
+
+  """Eye color of the user (eye)"""
+  eyeColor: String!
+
+  """Name of the user (name)"""
+  name: String!
+
+  """Company of the user (eye)"""
+  company: String!
+
+  """Email of the user (email)"""
+  email: String!
+
+  """Phone of the user (phone)"""
+  phone: String!
+
+  """Greeting of the user (greeting)"""
+  greeting: String!
+
+  """Friends of the user (friends)"""
+  friends: [User!]!
+}
+
+type Query {
+  list(name: String): [User!]!
+  user(id: String): User!
+}
