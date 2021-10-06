@@ -1,73 +1,97 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Dialog FullStack (react/pwa/node) Test
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Objetivo
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Desenvolver uma API GraphQL node e um front-end React/PWA:
 
-## Description
+## Descrição da API
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Deve conter uma query `list()`.
 
-## Installation
+A chamada query `list` sem parâmetro (o termo da busca por nome) deverá retornar todos os itens.
 
-```bash
-$ npm install
+Se fornecido o argumento da busca `name`, deverá retornar os dados que contém parte da string, usar RegEx no filtro.
+
+Download: [Data JSON](db.json)
+
+Modelo:
+```javascript
+[
+    {
+        "_id": "5f1b3f4b7917ef26107bd58c",
+        "index": 0,
+        "picture": "https://i.pravatar.cc/200?u=5f1b3f4b7917ef26107bd58c",
+        "age": 37,
+        "eyeColor": "brown",
+        "name": "Weber Stein",
+        "company": "VIAGRAND",
+        "email": "weber.stein@viagrand.ca",
+        "phone": "+1 (866) 533-3564",
+        "friends": [
+          {
+            "_id": "5f1d7f3e8882c9c811b111ce",
+            "index": 0,
+            "picture": "https://i.pravatar.cc/200?u=5f1d7f3e8882c9c811b111ce",
+            "age": 23,
+            "eyeColor": "green",
+            "name": "Patti Mckenzie",
+            "company": "DAISU",
+            "email": "pattimckenzie@daisu.com",
+            "phone": "+1 (960) 566-3327"
+          },
+        ],
+        "greeting": "Hello, Weber! You have 9 unread messages."
+    }
+]
 ```
 
-## Running the app
+### Stack:
+- GraphQL (apollo ou relay)
+- Express
 
-```bash
-# development
-$ npm run start
+### Requisitos:
+- colocar um middleware no Express para log dos requests
+- no final desse `README.md` colocar uma chamada funcional para a API em `curl`.
 
-# watch mode
-$ npm run start:dev
+### Diferencial
 
-# production mode
-$ npm run start:prod
-```
+- Usar TypeScript
+- Regex da pesquisa: considerar caractere de espaço, dado o payload acima `name: Weber Stein`, se entrar com `we in` deve retornar no resultado `Weber Stein`
 
-## Test
+### Executar o projeto
 
-```bash
-# unit tests
-$ npm run test
+Deverá executar com `yarn start` na porta 4000
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+## Descrição do React/PWA
 
-## Support
+### Tela Inicial
+![tela_incial](./docs/browser02.png)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Tela detalhe de amigos
+![tela_detalhe_amigos](./docs/browser03.png)
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Stack:
+- React
+- React Hooks
+- React Router
+- Apollo client (opcional)
+- styled-components
+- CSS Grid
+    - deve ser responsivo, no celular exibir apenas um card na horizontal.
+- Service Worker
+    - app deve funcionar off-line (páginas que foram visitadas)
 
-## License
+### Diferencial
 
-Nest is [MIT licensed](LICENSE).
+- Usar TypeScript
+
+### Executar o projeto
+
+Deverá executar com `yarn start` na porta 3000
+
+
+### Anotações que valem menção colocar aqui:
+
+Para criar esse projeto utilizei foi utilizado o [NestJS](https://nestjs.com).

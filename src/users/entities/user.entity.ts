@@ -12,7 +12,7 @@ export class User {
   picture: string;
 
   @Field(() => Int, { description: 'Age of the user (age)' })
-  age: string;
+  age: number;
 
   @Field(() => String, { description: 'Eye color of the user (eye)' })
   eyeColor: string;

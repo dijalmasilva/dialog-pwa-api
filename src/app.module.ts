@@ -5,7 +5,10 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({ autoSchemaFile: 'schema.gpl' }),
+    GraphQLModule.forRoot({
+      autoSchemaFile: 'schema.gpl',
+      cors: { origin: 'http://localhost:3000', credentials: false },
+    }),
     UsersModule,
   ],
   controllers: [],
